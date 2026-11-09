@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Students</title></head>
+<body>
+
+<h1>Add Student</h1>
+
+<form action="/save" method="post" th:object="${student}">
+    Name: <input type="text" th:field="*{fullName}">
+    Email: <input type="text" th:field="*{email}">
+    Age: <input type="number" th:field="*{age}">
+    <button>Save</button>
+</form>
+
+<h1>All Students</h1>
+
+<table>
+    <tr><th>Name</th><th>Email</th><th>Age</th><th>Delete</th></tr>
+    <tr th:each="s : ${students}">
+        <td th:text="${s.fullName}"></td>
+        <td th:text="${s.email}"></td>
+        <td th:text="${s.age}"></td>
+        <td><a th:href="@{/delete/{id}(id=${s.id})}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

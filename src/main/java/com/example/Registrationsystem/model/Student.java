@@ -1,61 +1,30 @@
 package com.example.Registrationsystem.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Student {
-   private String firstName;
-   private String lastName;
-   private String email;
-   private int id;
-   private int age;
-   public Student(){
 
-   }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-       public Student(String firstName, String lastName, String email, int id, int age){
-           this.firstName = firstName;
-           this.lastName = lastName;
-           this.email = email;
-           this.age = age;
-           this.id = id;
+    private String fullName;
+    private String email;
+    private int age;
 
-       }
-
-       public int getId() {
-           return id;
-       }
-        public void setid(int id) {
-       this.id = id;
-   }
-
-    public int getage() {
-        return age;
+    public Student() {
     }
 
-    public void setage(int age) {
-        this.age = age;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public String getfirstName() {
-        return firstName;
-    }
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
 
-    public void setfirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getlastName(){
-    return lastName;
-    }
-
-    public void setlastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getemail() {
-        return email;
-    }
-
-    public void setemail(String email) {
-        this.email = email;
-    }
-
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 }

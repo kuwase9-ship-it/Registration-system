@@ -7,26 +7,21 @@ import java.util.List;
 
 @Service
 public class StudentService {
+    private final StudentRepository repo;
 
-    private final StudentRepository repository;
-
-    public StudentService(StudentRepository repository) {
-        this.repository = repository;
+    public StudentService(StudentRepository repo) {
+        this.repo = repo;
     }
 
-    public List<Student> getAllStudents() {
-        return repository.findAll();
+    public List<Student> getAll() {
+        return repo.findAll();
     }
 
-    public Student saveStudent(Student student) {
-        return repository.save(student);
+    public void save(Student s) {
+        repo.save(s);
     }
 
-    public Student getStudentById(int id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public void deleteStudent(int id) {
-        repository.deleteById(id);
+    public void delete(int id) {
+        repo.deleteById(id);
     }
 }

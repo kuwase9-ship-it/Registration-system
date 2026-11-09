@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
-
     private final StudentService service;
 
     public StudentController(StudentService service) {
@@ -17,20 +16,20 @@ public class StudentController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("students", service.getAllStudents());
         model.addAttribute("student", new Student());
+        model.addAttribute("students", service.getAll());
         return "index";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute Student student) {
-        service.saveStudent(student);
+        service.save(student);
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id) {
-        service.deleteStudent(id);
+        service.delete(id);
         return "redirect:/";
     }
 }
